@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <FrameLayout
+            android:id="@+id/layout_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:background="@drawable/arrow"
+                android:rotation="180" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="NEW"
+            android:textSize="16dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Word"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter a word"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="58dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="A"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_a"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter options A"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="58dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="B"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_b"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter options B"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="58dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="C"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_c"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter options C"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="58dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="D"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_d"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter options D"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Answer"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/edit_answer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Please enter the answer"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center"
+        android:text="Save"
+        android:textSize="14dp" />
+
+</LinearLayout>
