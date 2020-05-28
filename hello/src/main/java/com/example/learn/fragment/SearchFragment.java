@@ -18,7 +18,7 @@ import com.example.learn.util.AppDBHelp;
 
 import java.util.List;
 
-// 搜索视图
+// search view
 public class SearchFragment extends Fragment {
 
     private View view;
