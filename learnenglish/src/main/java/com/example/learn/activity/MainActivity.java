@@ -84,6 +84,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void tabSelected(int index) {
+        // Set the bottom tab selection state
         for (int i = 0; i < res_img_normal.length; i++) {
             img[i].setImageResource(res_img_normal[i]);
             tv[i].setTextColor(getResources().getColor(R.color.black));
@@ -94,6 +95,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void showFragment(int index) {
+        // Dynamically register Fragment
         if (currentTabIndex != index) {
             FragmentTransaction trx = mSupportFragmentManager.beginTransaction();
             trx.hide(mFragments[currentTabIndex]);
@@ -107,6 +109,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUpdateSubscriber(String msg) {
+        // eventbus event subscription
         if ("homeRefresh".equals(msg)) {
             homeRefresh();
         }

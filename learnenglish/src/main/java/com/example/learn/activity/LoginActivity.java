@@ -27,6 +27,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.tv_login).setOnClickListener(this);
         findViewById(R.id.tv_reg).setOnClickListener(this);
 
+        // Get account information saved locally
         userinfo = SPHelper.getInstance(this).getUserInfo();
     }
 
@@ -38,6 +39,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 String password = edit_password.getText().toString();
                 if (!TextUtils.isEmpty(username) && username.equals(userinfo[0])) {
                     if (!TextUtils.isEmpty(password) && password.equals(userinfo[1])) {
+                        // Remember the password after successful login, will automatically log in later
                         SPHelper.getInstance(this).setRemember(1);
                         startActivity(new Intent(this, MainActivity.class));
                         finish();

@@ -39,6 +39,9 @@ public class SearchFragment extends Fragment {
         final TextView tv_english = view.findViewById(R.id.tv_english);
         final TextView tv_0 = view.findViewById(R.id.tv_0);
         SearchView searchview = view.findViewById(R.id.searchview);
+
+        // Monitor the search action of the soft keyboard of the search component.
+        // When the soft keyboard pops up on the phone, click the search key of the soft keyboard to trigger this event
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

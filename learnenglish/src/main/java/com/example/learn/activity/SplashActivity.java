@@ -21,7 +21,7 @@ public class SplashActivity extends Activity {
         int random = new Random().nextInt(10);
         findViewById(R.id.img).setBackgroundResource(R.drawable.splash0 + random);
 
-        // stop 2s
+        // Stay for 2 seconds, then enter the login page
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,6 +35,8 @@ public class SplashActivity extends Activity {
                         public void run() {
                             SPHelper spHelper = SPHelper.getInstance(SplashActivity.this);
                             String[] userinfo = spHelper.getUserInfo();
+
+                            // Logged in and did not log out is automatically logged in, otherwise it is manual login
                             if (userinfo != null && userinfo.length == 2 && !TextUtils.isEmpty(userinfo[0]) && !TextUtils.isEmpty(userinfo[1]) && spHelper.getRemember() == 1) {
                                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                                 finish();

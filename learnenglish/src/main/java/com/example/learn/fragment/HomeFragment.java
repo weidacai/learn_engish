@@ -22,7 +22,7 @@ import com.example.learn.util.SPHelper;
 
 import java.util.List;
 
-// Home view. Contents include: 10 have been learned today; 40 have been learned in total; 20 are not yet learned; 30 sets of wrong questions
+// Home view.
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
    private View view;
@@ -68,6 +68,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
    }
 
    public void refreshData() {
+
+      // Get all the data of this page from the local database
       wordModelList0 = appDBHelp.getTodayWordList();
       wordModelList1 = appDBHelp.getLearnedWordList();
       wordModelList = appDBHelp.getWordList();
@@ -86,6 +88,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
       }
    }
 
+   // Click event
    @Override
    public void onClick(View v) {
       Intent intent;

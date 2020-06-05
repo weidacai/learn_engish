@@ -52,6 +52,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.layout_logout).setOnClickListener(this);
     }
 
+    // Click event
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

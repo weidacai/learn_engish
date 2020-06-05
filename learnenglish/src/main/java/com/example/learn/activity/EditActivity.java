@@ -20,10 +20,13 @@ import java.util.List;
 /**Modify word view */
 public class EditActivity extends Activity implements WordEditClickLinstener {
 
-
+    // SearchView list component
     private SearchView searchview;
+    // RecyclerView list component
     private RecyclerView recyclerView;
+    // The data source of the RecyclerView list component
     private List<WordModel> wordModelList;
+    // Data adapter for RecyclerView list component
     private WordEditAdapter adapter;
 
 
@@ -32,17 +35,32 @@ public class EditActivity extends Activity implements WordEditClickLinstener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_edit);
         recyclerView = findViewById(R.id.recyclerview);
+
+        // Set the vertical dividing line of the RecyclerView list component
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+
+        // Set the RecyclerView list component to a linear list
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        // Query local data
         wordModelList = AppDBHelp.getInstance(this).getWordList();
+
+        // Instantiate the adapter
         adapter = new WordEditAdapter(wordModelList, this);
+
+        // Set the adapter of the RecyclerView list component
         recyclerView.setAdapter(adapter);
         searchview = findViewById(R.id.searchview);
+
+        // Monitor the search action of the soft keyboard of the search component.
+        // When the soft keyboard pops up on the phone,
+        // click the search key of the soft keyboard to trigger this event
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (wordModelList != null) {
+                    // Update the data of the RecyclerView list component
                     wordModelList.clear();
                     wordModelList.addAll(AppDBHelp.getInstance(EditActivity.this).findWordList(query));
                     adapter.notifyDataSetChanged();
@@ -67,8 +85,11 @@ public class EditActivity extends Activity implements WordEditClickLinstener {
     @Override
     public void delete(int position) {
         AppDBHelp.getInstance(this).deleteWord(wordModelList.get(position).getId());
-        // Notify the homepage to update relevant data
+
+        // Publish events subscribed by eventbus, update relevant data
         EventBus.getDefault().post("homeRefresh");
+
+        // Delete the corresponding data
         wordModelList.remove(position);
         adapter.notifyItemRemoved(position);
         adapter.notifyItemRangeChanged(position, wordModelList.size() - position);

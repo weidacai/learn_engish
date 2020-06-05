@@ -24,7 +24,6 @@ public class LearnActivity extends Activity implements View.OnClickListener {
     private RadioGroup radiogroup;
     private RadioButton radio1, radio2, radio3, radio4;
     private AppDBHelp appDBHelp;
-    // Current question
     private int index;
     private WordModel wordModel;
     private String userAnswer;
@@ -50,6 +49,8 @@ public class LearnActivity extends Activity implements View.OnClickListener {
             radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                    // The user selects an answer
                     switch (checkedId) {
                         case R.id.radio1:
                             userAnswer = "A";
@@ -69,6 +70,8 @@ public class LearnActivity extends Activity implements View.OnClickListener {
                 }
             });
             appDBHelp = AppDBHelp.getInstance(this);
+
+            // Get different types of question bank from local database
             switch (type) {
                 case 1:
                     wordModelList = appDBHelp.getTodayWordList();
@@ -99,6 +102,7 @@ public class LearnActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.btn_pre:
+                // click on the previous question
                 if (index == 0) {
                     Toast.makeText(this, "Already the first question", Toast.LENGTH_SHORT).show();
                 } else {
@@ -110,6 +114,7 @@ public class LearnActivity extends Activity implements View.OnClickListener {
                 if (TextUtils.isEmpty(userAnswer)) {
                     Toast.makeText(this, "Please select the correct answer", Toast.LENGTH_SHORT).show();
                 } else if (wordModel.getAnswer().contains(userAnswer)) {
+                    // Answer the correct prompt message
                     tv_tips.setVisibility(View.VISIBLE);
                     if (wordModel.getAnswer().contains("A")) {
                         tv_tips.setText("correct answer。" + wordModel.getEnglish() + ": " + wordModel.getChinesea());
@@ -123,6 +128,7 @@ public class LearnActivity extends Activity implements View.OnClickListener {
                     tv_tips.setTextColor(getResources().getColor(R.color.green));
                     appDBHelp.learnWord(wordModel.getId(), 1);
                 } else {
+                    // Answer the error message
                     tv_tips.setVisibility(View.VISIBLE);
                     if (wordModel.getAnswer().contains("A")) {
                         tv_tips.setText("wrong answer。" + wordModel.getEnglish() + ": " + wordModel.getChinesea());
@@ -138,6 +144,7 @@ public class LearnActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.btn_next:
+                // Click on the next question
                 if (index == wordModelList.size() - 1) {
                     Toast.makeText(this, "Already the last question", Toast.LENGTH_SHORT).show();
                 } else {

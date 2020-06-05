@@ -17,7 +17,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.io.Serializable;
 
-/** New / edit word view*/
+/** New  edit word view*/
 public class AddActivity extends Activity {
 
     private EditText edit_0, edit_a, edit_b, edit_c, edit_d, edit_answer;
@@ -42,6 +42,8 @@ public class AddActivity extends Activity {
         findViewById(R.id.btn_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Whether the input data is empty and equal
                 if (!TextUtils.isEmpty(edit_0.getText().toString())) {
                     if (!TextUtils.isEmpty(edit_a.getText().toString())) {
                         if (!TextUtils.isEmpty(edit_b.getText().toString())) {
@@ -49,6 +51,8 @@ public class AddActivity extends Activity {
                                 if (!TextUtils.isEmpty(edit_d.getText().toString())) {
                                     String answer = edit_answer.getText().toString().replace(" ", "");
                                     if (!TextUtils.isEmpty(answer) && ("A".equals(answer) || "B".equals(answer) || "C".equals(answer) || "D".equals(answer))) {
+
+                                        // Create a new WordModel object and instantiate the input data
                                         WordModel wordModel = new WordModel();
                                         wordModel.setEnglish(edit_0.getText().toString());
                                         wordModel.setChinesea(edit_a.getText().toString());
@@ -57,11 +61,16 @@ public class AddActivity extends Activity {
                                         wordModel.setChinesed(edit_d.getText().toString());
                                         wordModel.setAnswer(answer);
                                         if (model == 0) {
+
+                                            // Save to local database
                                             AppDBHelp.getInstance(AddActivity.this).saveWord(wordModel);
-                                            // Notify the homepage to update relevant data
+
+                                            // Publish events subscribed by eventbus, update related data
                                             EventBus.getDefault().post("homeRefresh");
                                             Toast.makeText(AddActivity.this, "Added successfully", Toast.LENGTH_SHORT).show();
                                         } else if (model == 1) {
+
+                                            // update to local database
                                             AppDBHelp.getInstance(AddActivity.this).updateWord(wordModel);
                                             Toast.makeText(AddActivity.this, "Edit successfully", Toast.LENGTH_SHORT).show();
                                         }
@@ -95,6 +104,8 @@ public class AddActivity extends Activity {
             WordModel wm = (WordModel) s;
             model = 1;
             ((TextView) findViewById(R.id.tv_title)).setText("Edit");
+
+            // If it is in editing state, you need to display the data before editing first
             edit_0.setText(wm.getEnglish());
             edit_a.setText(wm.getChinesea());
             edit_b.setText(wm.getChineseb());

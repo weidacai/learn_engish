@@ -35,6 +35,8 @@ public class EditPwdActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String old_password = SPHelper.getInstance(EditPwdActivity.this).getUserInfo()[1];
+
+                // Whether the input data is empty and equal
                 if (!TextUtils.isEmpty(edit_password.getText().toString()) && edit_password.getText().toString().equals(old_password)) {
                     if (!TextUtils.isEmpty(edit_password1.getText().toString()) && !TextUtils.isEmpty(edit_password2.getText().toString()) && edit_password1.getText().toString().equals(edit_password2.getText().toString())) {
                         SPHelper.getInstance(EditPwdActivity.this).saveUserInfo(SPHelper.getInstance(EditPwdActivity.this).getUserInfo()[0], edit_password1.getText().toString());

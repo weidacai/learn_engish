@@ -11,7 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/hello" />
+            <option value="$PROJECT_DIR$/learnenglish" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

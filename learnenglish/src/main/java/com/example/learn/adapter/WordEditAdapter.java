@@ -13,6 +13,9 @@ import com.example.learn.model.WordModel;
 
 import java.util.List;
 
+
+// The data adapter of the RecyclerView list component is a fixed format and must inherit RecyclerView.Adapter<?>.
+// For detailed usage of each function, please refer to the API
 public class WordEditAdapter extends RecyclerView.Adapter<WordEditAdapter.ViewHolder> {
 
 

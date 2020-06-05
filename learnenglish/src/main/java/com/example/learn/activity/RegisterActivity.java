@@ -39,6 +39,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     if (!TextUtils.isEmpty(password)) {
                         if (!TextUtils.isEmpty(password2) && password.equals(password2)) {
                             Toast.makeText(this, "Register successfully, please log in", Toast.LENGTH_SHORT).show();
+
+                            // Save the account password in the local SharedPreferences configuration file after successful registration
                             SPHelper.getInstance(this).saveUserInfo(username, password);
                             startActivity(new Intent(this, LoginActivity.class));
                             finish();
